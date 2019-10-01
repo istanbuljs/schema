@@ -68,7 +68,7 @@ const testExclude = {
 		items: {
 			type: 'string'
 		},
-		default: ['.cjs', '.mjs', '.ts', '.tsx', '.jsx'],
+		default: ['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx'],
 		nycCommands: nycCommands.testExclude,
 		nycAlias: 'e'
 	}
