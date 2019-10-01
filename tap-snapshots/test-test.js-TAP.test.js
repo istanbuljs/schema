@@ -23,6 +23,7 @@ Object {
   ],
   "excludeNodeModules": true,
   "extension": Array [
+    ".js",
     ".cjs",
     ".mjs",
     ".ts",
@@ -99,6 +100,7 @@ Object {
   "excludeNodeModules": true,
   "exitOnError": false,
   "extension": Array [
+    ".js",
     ".cjs",
     ".mjs",
     ".ts",
@@ -156,6 +158,7 @@ Object {
   ],
   "excludeNodeModules": true,
   "extension": Array [
+    ".js",
     ".cjs",
     ".mjs",
     ".ts",
