@@ -1,5 +1,7 @@
 'use strict';
 
+const defaultExclude = require('./default-exclude.js');
+
 const nycCommands = {
 	all: [null, 'check-coverage', 'instrument', 'merge', 'report'],
 	testExclude: [null, 'instrument', 'report', 'check-coverage'],
@@ -13,6 +15,9 @@ const nycCommands = {
 const cwd = {
 	description: 'working directory used when resolving paths',
 	type: 'string',
+	get default() {
+		return process.cwd();
+	},
 	nycCommands: nycCommands.all
 };
 
@@ -30,7 +35,6 @@ const tempDir = {
 	nycCommands: [null, 'check-coverage', 'merge', 'report']
 };
 
-const devConfigsJS = ['ava', 'babel', 'jest', 'rollup', 'webpack'];
 const testExclude = {
 	exclude: {
 		description: 'a list of specific files and directories that should be excluded from coverage, glob patterns are supported',
@@ -38,16 +42,7 @@ const testExclude = {
 		items: {
 			type: 'string'
 		},
-		default: [
-			'coverage/**',
-			'packages/*/test{,s}/**',
-			'test{,s}/**',
-			'test{,-*}.{js,cjs,mjs,ts}',
-			'**/*{.,-}test.{js,cjs,mjs,ts}',
-			'**/__tests__/**',
-			'**/nyc.config.{js,cjs,mjs}',
-			`**/{${devConfigsJS.join()}}.config.js`
-		],
+		default: defaultExclude,
 		nycCommands: nycCommands.testExclude,
 		nycAlias: 'x'
 	},
@@ -389,16 +384,7 @@ const nyc = {
 	}
 };
 
-function getDefaults(obj) {
-	const defaults = {};
-	Object.entries(obj.properties).forEach(([name, info]) => {
-		defaults[name] = info.default;
-	});
-
-	return defaults;
-}
-
-module.exports = {
+const configs = {
 	nyc,
 	testExclude: {
 		description: 'test-exclude options',
@@ -432,7 +418,31 @@ module.exports = {
 	}
 };
 
-module.exports.defaults = Object.entries(module.exports).reduce(
-	(acc, [name, schema]) => Object.assign(acc, {[name]: getDefaults(schema)}),
-	{}
-);
+function defaultsReducer(defaults, [name, {default: value}]) {
+	/* Modifying arrays in defaults is safe, does not change schema. */
+	if (Array.isArray(value)) {
+		value = [...value];
+	}
+
+	return Object.assign(defaults, {[name]: value});
+}
+
+module.exports = {
+	...configs,
+	defaults: Object.keys(configs).reduce(
+		(defaults, id) => {
+			Object.defineProperty(defaults, id, {
+				enumerable: true,
+				get() {
+					/* This defers `process.cwd()` until defaults are requested. */
+					return Object.entries(configs[id].properties)
+						.filter(([, info]) => 'default' in info)
+						.reduce(defaultsReducer, {});
+				}
+			});
+
+			return defaults;
+		},
+		{}
+	)
+};

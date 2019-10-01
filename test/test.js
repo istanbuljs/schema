@@ -1,3 +1,4 @@
+import path from 'path';
 import {test} from 'tap';
 
 import schemas from '..';
@@ -17,7 +18,7 @@ test('expected exports', async t => {
 	isObjectSchema(t, schemas.instrumenter);
 });
 
-const noDefault = ['cwd', 'nycrcPath', 'cacheDir'];
+const noDefault = ['nycrcPath', 'cacheDir'];
 const commandOptions = [null, 'instrument', 'report', 'check-coverage', 'merge'];
 const infoOptions = [
 	'default',
@@ -70,10 +71,41 @@ Object.entries(schemas.nyc.properties).forEach(([name, info]) => {
 	});
 });
 
+function checkDefaults(t, id) {
+	const defaults = schemas.defaults[id];
+	if ('cwd' in defaults) {
+		t.is(defaults.cwd, process.cwd());
+		defaults.cwd = '$CWD';
+	}
+
+	Object.entries(defaults).forEach(([name, value]) => {
+		if (!value || typeof value !== 'object') {
+			return;
+		}
+
+		/* Verify arrays / objects are shallow clones. */
+		t.same(defaults[name], schemas[id].properties[name].default);
+		t.notEqual(defaults[name], schemas[id].properties[name].default);
+	});
+
+	t.matchSnapshot(defaults, id);
+}
+
 test('defaults', async t => {
-	t.matchSnapshot(schemas.defaults.nyc, 'nyc');
-	t.matchSnapshot(schemas.defaults.testExclude, 'testExclude');
-	t.matchSnapshot(schemas.defaults.babelPluginIstanbul, 'babelPluginIstanbul');
-	t.matchSnapshot(schemas.defaults.instrumentVisitor, 'instrumentVisitor');
-	t.matchSnapshot(schemas.defaults.instrumenter, 'instrumenter');
+	const originalCwd = process.cwd();
+	process.chdir(path.resolve(__dirname, '..'));
+	checkDefaults(t, 'nyc');
+	checkDefaults(t, 'testExclude');
+	checkDefaults(t, 'babelPluginIstanbul');
+	checkDefaults(t, 'instrumentVisitor');
+	checkDefaults(t, 'instrumenter');
+
+	process.chdir(__dirname);
+	Object.entries(schemas.defaults).forEach(([type, defaults]) => {
+		if ('cwd' in defaults) {
+			t.is(defaults.cwd, __dirname, type);
+		}
+	});
+
+	process.chdir(originalCwd);
 });

@@ -10,7 +10,7 @@ Object {
   "coverageGlobalScope": "this",
   "coverageGlobalScopeFunc": true,
   "coverageVariable": "__coverage__",
-  "cwd": undefined,
+  "cwd": "$CWD",
   "exclude": Array [
     "coverage/**",
     "packages/*/test{,s}/**",
@@ -74,7 +74,6 @@ Object {
   "babelCache": false,
   "branches": 0,
   "cache": true,
-  "cacheDir": undefined,
   "checkCoverage": false,
   "clean": true,
   "compact": true,
@@ -82,7 +81,7 @@ Object {
   "coverageGlobalScope": "this",
   "coverageGlobalScopeFunc": true,
   "coverageVariable": "__coverage__",
-  "cwd": undefined,
+  "cwd": "$CWD",
   "delete": false,
   "eager": false,
   "esModules": true,
@@ -114,7 +113,6 @@ Object {
   "include": Array [],
   "inPlace": false,
   "lines": 90,
-  "nycrcPath": undefined,
   "parserPlugins": Array [
     "asyncGenerators",
     "bigInt",
@@ -145,7 +143,7 @@ Object {
 
 exports[`test/test.js TAP defaults > testExclude 1`] = `
 Object {
-  "cwd": undefined,
+  "cwd": "$CWD",
   "exclude": Array [
     "coverage/**",
     "packages/*/test{,s}/**",
