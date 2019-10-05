@@ -123,7 +123,7 @@ const instrumentParseGen = {
 		items: {
 			type: 'string'
 		},
-		/* babel parser plugins are to be enabled when the feature is stage 3 and
+		/* Babel parser plugins are to be enabled when the feature is stage 3 and
 		 * implemented in a released version of node.js. */
 		default: [
 			'asyncGenerators',
