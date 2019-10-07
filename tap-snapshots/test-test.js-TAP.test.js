@@ -114,6 +114,7 @@ Object {
   "ignoreClassMethods": Array [],
   "include": Array [],
   "inPlace": false,
+  "instrument": true,
   "lines": 90,
   "parserPlugins": Array [
     "asyncGenerators",

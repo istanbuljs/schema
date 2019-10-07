@@ -371,6 +371,12 @@ const nyc = {
 			nycCommands: nycCommands.instrument,
 			nycAlias: 'i'
 		},
+		instrument: {
+			description: 'should nyc handle instrumentation?',
+			type: 'boolean',
+			default: true,
+			nycCommands: nycCommands.instrument
+		},
 
 		/* Check coverage */
 		...checkCoverage,
