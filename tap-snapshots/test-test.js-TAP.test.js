@@ -141,6 +141,7 @@ Object {
   "sourceMap": true,
   "statements": 0,
   "tempDir": "./.nyc_output",
+  "useSpawnWrap": false,
 }
 `
 
