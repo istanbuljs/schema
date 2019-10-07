@@ -286,6 +286,12 @@ const nycMain = {
 		default: false,
 		nycCommands: nycCommands.main
 	},
+	useSpawnWrap: {
+		description: 'use spawn-wrap instead of setting process.env.NODE_OPTIONS',
+		type: 'boolean',
+		default: false,
+		nycCommands: nycCommands.main
+	},
 	hookRequire: {
 		description: 'should nyc wrap require?',
 		type: 'boolean',
