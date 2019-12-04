@@ -14,6 +14,7 @@ Object {
   "exclude": Array [
     "coverage/**",
     "packages/*/test{,s}/**",
+    "**/*.d.ts",
     "test{,s}/**",
     "test{,-*}.{js,cjs,mjs,ts}",
     "**/*{.,-}test.{js,cjs,mjs,ts}",
@@ -89,6 +90,7 @@ Object {
   "exclude": Array [
     "coverage/**",
     "packages/*/test{,s}/**",
+    "**/*.d.ts",
     "test{,s}/**",
     "test{,-*}.{js,cjs,mjs,ts}",
     "**/*{.,-}test.{js,cjs,mjs,ts}",
@@ -151,6 +153,7 @@ Object {
   "exclude": Array [
     "coverage/**",
     "packages/*/test{,s}/**",
+    "**/*.d.ts",
     "test{,s}/**",
     "test{,-*}.{js,cjs,mjs,ts}",
     "**/*{.,-}test.{js,cjs,mjs,ts}",

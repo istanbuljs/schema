@@ -5,6 +5,7 @@ const devConfigsJS = ['ava', 'babel', 'jest', 'rollup', 'webpack'];
 module.exports = [
 	'coverage/**',
 	'packages/*/test{,s}/**',
+	'**/*.d.ts',
 	'test{,s}/**',
 	'test{,-*}.{js,cjs,mjs,ts}',
 	'**/*{.,-}test.{js,cjs,mjs,ts}',
