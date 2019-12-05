@@ -1,7 +1,5 @@
 'use strict';
 
-const devConfigsJS = ['ava', 'babel', 'jest', 'rollup', 'webpack'];
-
 module.exports = [
 	'coverage/**',
 	'packages/*/test{,s}/**',
@@ -10,6 +8,10 @@ module.exports = [
 	'test{,-*}.{js,cjs,mjs,ts}',
 	'**/*{.,-}test.{js,cjs,mjs,ts}',
 	'**/__tests__/**',
-	'**/nyc.config.{js,cjs,mjs}',
-	`**/{${devConfigsJS.join()}}.config.js`
+
+	/* Exclude common development tool configuration files */
+	'**/{ava,nyc}.config.{js,cjs,mjs}',
+	'**/jest.config.{js,cjs,mjs,ts}',
+	'**/{karma,rollup,webpack}.config.js',
+	'**/{babel.config,.eslintrc,.mocharc}.{js,cjs}'
 ];
