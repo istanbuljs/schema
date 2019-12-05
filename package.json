@@ -1,6 +1,6 @@
 {
 	"name": "@istanbuljs/schema",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Schemas describing various structures used by nyc and istanbuljs",
 	"main": "index.js",
 	"scripts": {
