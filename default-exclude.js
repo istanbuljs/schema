@@ -10,8 +10,8 @@ module.exports = [
 	'**/__tests__/**',
 
 	/* Exclude common development tool configuration files */
-	'**/{ava,nyc}.config.{js,cjs,mjs}',
+	'**/{ava,babel,nyc}.config.{js,cjs,mjs}',
 	'**/jest.config.{js,cjs,mjs,ts}',
 	'**/{karma,rollup,webpack}.config.js',
-	'**/{babel.config,.eslintrc,.mocharc}.{js,cjs}'
+	'**/.{eslint,mocha}rc.{js,cjs}'
 ];
