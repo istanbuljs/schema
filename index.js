@@ -132,6 +132,7 @@ const instrumentParseGen = {
 			'classPrivateProperties',
 			'dynamicImport',
 			'importMeta',
+			'numericSeparator',
 			'objectRestSpread',
 			'optionalCatchBinding'
 		],
