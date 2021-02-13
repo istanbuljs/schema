@@ -131,11 +131,13 @@ const instrumentParseGen = {
 			'bigInt',
 			'classProperties',
 			'classPrivateProperties',
+			'classPrivateMethods',
 			'dynamicImport',
 			'importMeta',
 			'numericSeparator',
 			'objectRestSpread',
-			'optionalCatchBinding'
+			'optionalCatchBinding',
+			'topLevelAwait'
 		],
 		nycCommands: nycCommands.instrument
 	},
