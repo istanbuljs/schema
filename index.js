@@ -33,7 +33,7 @@ const tempDir = {
 	default: './.nyc_output',
 	nycAlias: 't',
 	nycHiddenAlias: 'temp-directory',
-	nycCommands: [null, 'check-coverage', 'merge', 'report']
+	nycCommands: [null, 'check-coverage', 'instrument', 'merge', 'report']
 };
 
 const testExclude = {
@@ -343,6 +343,12 @@ const instrumentOnly = {
 	},
 	completeCopy: {
 		description: 'should nyc copy all files from input to output as well as instrumented files?',
+		type: 'boolean',
+		default: false,
+		nycCommands: nycCommands.instrumentOnly
+	},
+	baseline: {
+		description: 'should nyc create a baseline coverage file?',
 		type: 'boolean',
 		default: false,
 		nycCommands: nycCommands.instrumentOnly

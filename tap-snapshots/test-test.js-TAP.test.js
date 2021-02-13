@@ -79,6 +79,7 @@ Object {
   "all": false,
   "autoWrap": true,
   "babelCache": false,
+  "baseline": false,
   "branches": 0,
   "cache": true,
   "checkCoverage": false,
