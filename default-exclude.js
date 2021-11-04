@@ -18,5 +18,5 @@ module.exports = [
 	'**/{ava,babel,nyc}.config.{js,cjs,mjs}',
 	'**/jest.config.{js,cjs,mjs,ts}',
 	'**/{karma,rollup,webpack}.config.js',
-	'**/.{eslint,mocha}rc.{js,cjs}'
+	'**/.{eslint,mocha,babel}rc.{js,cjs}'
 ];
