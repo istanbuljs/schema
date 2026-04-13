@@ -1,0 +1,180 @@
+exports[`defaults 1`] = `
+{
+  "cwd": "$CWD",
+  "tempDir": "./.nyc_output",
+  "exclude": [
+    "coverage/**",
+    "packages/*/test{,s}/**",
+    "**/*.d.ts",
+    "test{,s}/**",
+    "test{,-*}.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/__tests__/**",
+    "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+    "**/jest.config.{js,cjs,mjs,ts}",
+    "**/{karma,rollup,webpack}.config.js",
+    "**/.{eslint,mocha}rc.{js,cjs}"
+  ],
+  "excludeNodeModules": true,
+  "include": [],
+  "extension": [
+    ".js",
+    ".cjs",
+    ".mjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "coverageVariable": "__coverage__",
+  "coverageGlobalScope": "this",
+  "coverageGlobalScopeFunc": true,
+  "ignoreClassMethods": [],
+  "autoWrap": true,
+  "esModules": true,
+  "parserPlugins": [
+    "asyncGenerators",
+    "bigInt",
+    "classProperties",
+    "classPrivateProperties",
+    "classPrivateMethods",
+    "dynamicImport",
+    "importMeta",
+    "numericSeparator",
+    "objectRestSpread",
+    "optionalCatchBinding",
+    "topLevelAwait"
+  ],
+  "compact": true,
+  "preserveComments": true,
+  "produceSourceMap": true,
+  "sourceMap": true,
+  "require": [],
+  "instrument": true,
+  "excludeAfterRemap": true,
+  "branches": 0,
+  "functions": 0,
+  "lines": 90,
+  "statements": 0,
+  "perFile": false,
+  "checkCoverage": false,
+  "reporter": [
+    "text"
+  ],
+  "reportDir": "coverage",
+  "showProcessTree": false,
+  "skipEmpty": false,
+  "skipFull": false,
+  "silent": false,
+  "all": false,
+  "eager": false,
+  "cache": true,
+  "babelCache": false,
+  "hookImport": true,
+  "hookRequire": true,
+  "hookRunInContext": false,
+  "hookRunInThisContext": false,
+  "clean": true,
+  "inPlace": false,
+  "exitOnError": false,
+  "delete": false,
+  "completeCopy": false
+}
+`;
+
+exports[`defaults 2`] = `
+{
+  "cwd": "$CWD",
+  "exclude": [
+    "coverage/**",
+    "packages/*/test{,s}/**",
+    "**/*.d.ts",
+    "test{,s}/**",
+    "test{,-*}.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/__tests__/**",
+    "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+    "**/jest.config.{js,cjs,mjs,ts}",
+    "**/{karma,rollup,webpack}.config.js",
+    "**/.{eslint,mocha}rc.{js,cjs}"
+  ],
+  "excludeNodeModules": true,
+  "include": [],
+  "extension": [
+    ".js",
+    ".cjs",
+    ".mjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ]
+}
+`;
+
+exports[`defaults 3`] = `
+{
+  "cwd": "$CWD",
+  "exclude": [
+    "coverage/**",
+    "packages/*/test{,s}/**",
+    "**/*.d.ts",
+    "test{,s}/**",
+    "test{,-*}.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
+    "**/__tests__/**",
+    "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+    "**/jest.config.{js,cjs,mjs,ts}",
+    "**/{karma,rollup,webpack}.config.js",
+    "**/.{eslint,mocha}rc.{js,cjs}"
+  ],
+  "excludeNodeModules": true,
+  "include": [],
+  "extension": [
+    ".js",
+    ".cjs",
+    ".mjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "coverageVariable": "__coverage__",
+  "coverageGlobalScope": "this",
+  "coverageGlobalScopeFunc": true,
+  "ignoreClassMethods": []
+}
+`;
+
+exports[`defaults 4`] = `
+{
+  "coverageVariable": "__coverage__",
+  "coverageGlobalScope": "this",
+  "coverageGlobalScopeFunc": true,
+  "ignoreClassMethods": []
+}
+`;
+
+exports[`defaults 5`] = `
+{
+  "coverageVariable": "__coverage__",
+  "coverageGlobalScope": "this",
+  "coverageGlobalScopeFunc": true,
+  "ignoreClassMethods": [],
+  "autoWrap": true,
+  "esModules": true,
+  "parserPlugins": [
+    "asyncGenerators",
+    "bigInt",
+    "classProperties",
+    "classPrivateProperties",
+    "classPrivateMethods",
+    "dynamicImport",
+    "importMeta",
+    "numericSeparator",
+    "objectRestSpread",
+    "optionalCatchBinding",
+    "topLevelAwait"
+  ],
+  "compact": true,
+  "preserveComments": true,
+  "produceSourceMap": true
+}
+`;

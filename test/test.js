@@ -1,21 +1,22 @@
-import path from 'path';
-import {test} from 'tap';
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const {test} = require('node:test');
 
-import schemas from '..';
+const schemas = require('..');
 
-function isObjectSchema(t, obj) {
-	t.type(obj, 'object');
-	t.type(obj.description, 'string');
-	t.is(obj.type, 'object');
-	t.type(obj.properties, 'object');
+function isObjectSchema(obj) {
+	assert.equal(typeof obj, 'object');
+	assert.equal(typeof obj.description, 'string');
+	assert.equal(obj.type, 'object');
+	assert.equal(typeof obj.properties, 'object');
 }
 
-test('expected exports', async t => {
-	t.type(schemas, 'object');
-	isObjectSchema(t, schemas.nyc);
-	isObjectSchema(t, schemas.testExclude);
-	isObjectSchema(t, schemas.babelPluginIstanbul);
-	isObjectSchema(t, schemas.instrumenter);
+test('expected exports', async () => {
+	assert.equal(typeof schemas, 'object');
+	isObjectSchema(schemas.nyc);
+	isObjectSchema(schemas.testExclude);
+	isObjectSchema(schemas.babelPluginIstanbul);
+	isObjectSchema(schemas.instrumenter);
 });
 
 const noDefault = ['nycrcPath', 'cacheDir'];
@@ -29,43 +30,43 @@ const infoOptions = [
 	'nycHiddenAlias'
 ];
 
-function maybeType(t, value, type) {
+function maybeType(value, type) {
 	if (typeof value !== 'undefined') {
-		t.type(value, type);
+		assert.equal(typeof value, type);
 	}
 }
 
 Object.entries(schemas.nyc.properties).forEach(([name, info]) => {
-	test(`nyc.properties['${name}'] is valid`, async t => {
-		t.type(info, 'object', name);
-		t.type(info.description, 'string', name);
-		t.type(info.type, name === 'nycrcPath' ? 'undefined' : 'string');
-		t.true(Array.isArray(info.nycCommands));
-		t.same(info.nycCommands.filter(s => !commandOptions.includes(s)), []);
+	test(`nyc.properties['${name}'] is valid`, async () => {
+		assert.equal(typeof info, 'object');
+		assert.equal(typeof info.description, 'string');
+		assert.equal(typeof info.type, name === 'nycrcPath' ? 'undefined' : 'string');
+		assert.ok(Array.isArray(info.nycCommands));
+		assert.deepStrictEqual(info.nycCommands.filter(s => !commandOptions.includes(s)), []);
 
-		maybeType(t, info.nycAlias, 'string');
-		maybeType(t, info.nycHiddenAlias, 'string');
+		maybeType(info.nycAlias, 'string');
+		maybeType(info.nycHiddenAlias, 'string');
 
 		const extraInfo = Object.keys(info).filter(s => !infoOptions.includes(s));
 		if (info.type === 'array') {
-			t.type(info.items, 'object');
-			t.is(info.items.type, 'string');
-			t.true(Array.isArray(info.default));
-			t.true(info.default.every(s => typeof s === 'string'));
-			t.same(extraInfo, ['items']);
+			assert.equal(typeof info.items, 'object');
+			assert.equal(info.items.type, 'string');
+			assert.ok(Array.isArray(info.default));
+			assert.ok(info.default.every(s => typeof s === 'string'));
+			assert.deepStrictEqual(extraInfo, ['items']);
 		} else {
 			if (noDefault.includes(name)) {
-				t.type(info.default, 'undefined');
+				assert.equal(typeof info.default, 'undefined');
 			} else {
-				t.type(info.default, info.type);
+				assert.equal(typeof info.default, info.type);
 			}
 
 			if (info.type === 'number') {
-				maybeType(t, info.minimum, 'number');
-				maybeType(t, info.maximum, 'number');
-				t.same(extraInfo.filter(s => !['maximum', 'minimum'].includes(s)), []);
+				maybeType(info.minimum, 'number');
+				maybeType(info.maximum, 'number');
+				assert.deepStrictEqual(extraInfo.filter(s => !['maximum', 'minimum'].includes(s)), []);
 			} else {
-				t.same(extraInfo, []);
+				assert.deepStrictEqual(extraInfo, []);
 			}
 		}
 	});
@@ -74,7 +75,7 @@ Object.entries(schemas.nyc.properties).forEach(([name, info]) => {
 function checkDefaults(t, id) {
 	const defaults = schemas.defaults[id];
 	if ('cwd' in defaults) {
-		t.is(defaults.cwd, process.cwd());
+		assert.strictEqual(defaults.cwd, process.cwd());
 		defaults.cwd = '$CWD';
 	}
 
@@ -84,11 +85,11 @@ function checkDefaults(t, id) {
 		}
 
 		/* Verify arrays / objects are shallow clones. */
-		t.same(defaults[name], schemas[id].properties[name].default);
-		t.notEqual(defaults[name], schemas[id].properties[name].default);
+		assert.deepStrictEqual(defaults[name], schemas[id].properties[name].default);
+		assert.notStrictEqual(defaults[name], schemas[id].properties[name].default);
 	});
 
-	t.matchSnapshot(defaults, id);
+	t.assert.snapshot(defaults);
 }
 
 test('defaults', async t => {
@@ -103,7 +104,7 @@ test('defaults', async t => {
 	process.chdir(__dirname);
 	Object.entries(schemas.defaults).forEach(([type, defaults]) => {
 		if ('cwd' in defaults) {
-			t.is(defaults.cwd, __dirname, type);
+			assert.strictEqual(defaults.cwd, __dirname);
 		}
 	});
 
