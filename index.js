@@ -251,6 +251,21 @@ const report = {
 	}
 };
 
+const cache = {
+	cache: {
+		description: 'cache instrumentation results for improved performance',
+		type: 'boolean',
+		default: true,
+		nycCommands: nycCommands.instrument,
+		nycAlias: 'c'
+	},
+	cacheDir: {
+		description: 'explicitly set location for instrumentation cache',
+		type: 'string',
+		nycCommands: nycCommands.instrument
+	}
+};
+
 const nycMain = {
 	silent: {
 		description: 'don\'t output a report after tests finish running',
@@ -270,18 +285,6 @@ const nycMain = {
 		description: 'instantiate the instrumenter at startup (see https://git.io/vMKZ9)',
 		type: 'boolean',
 		default: false,
-		nycCommands: nycCommands.main
-	},
-	cache: {
-		description: 'cache instrumentation results for improved performance',
-		type: 'boolean',
-		default: true,
-		nycCommands: nycCommands.main,
-		nycAlias: 'c'
-	},
-	cacheDir: {
-		description: 'explicitly set location for instrumentation cache',
-		type: 'string',
 		nycCommands: nycCommands.main
 	},
 	babelCache: {
@@ -393,6 +396,9 @@ const nyc = {
 
 		/* Report options */
 		...report,
+
+		/* Cache options */
+		...cache,
 
 		/* Main command options */
 		...nycMain,
