@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.6](https://github.com/istanbuljs/schema/compare/v0.1.5...v0.1.6) (2026-04-13)
+
+
+### Bug Fixes
+
+* Undo change to schema in 0.1.x series ([440f977](https://github.com/istanbuljs/schema/commit/440f977adc826fa51aa5eba06ee4d89065ca4261))
+
 ## [0.1.5](https://github.com/istanbuljs/schema/compare/v0.1.4...v0.1.5) (2026-04-13)
 
 
