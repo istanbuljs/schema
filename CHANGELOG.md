@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.4](https://github.com/istanbuljs/schema/compare/v0.1.3...v0.1.4) (2026-04-13)
+
+
+### Bug Fixes
+
+* Remove development dependencies ([a24b4c1](https://github.com/istanbuljs/schema/commit/a24b4c1bccf65f63e7f1fe6bd82bed82e57abc80))
+
 ### [0.1.3](https://github.com/istanbuljs/schema/compare/v0.1.2...v0.1.3) (2021-02-13)
 
 
