@@ -69,7 +69,7 @@ exports[`defaults 1`] = `
   "eager": false,
   "cache": true,
   "babelCache": false,
-  "useSpawnWrap": false,
+  "hookImport": true,
   "hookRequire": true,
   "hookRunInContext": false,
   "hookRunInThisContext": false,

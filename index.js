@@ -290,10 +290,10 @@ const nycMain = {
 		default: false,
 		nycCommands: nycCommands.main
 	},
-	useSpawnWrap: {
-		description: 'use spawn-wrap instead of setting process.env.NODE_OPTIONS',
+	hookImport: {
+		description: 'should nyc attempt to wrap import?',
 		type: 'boolean',
-		default: false,
+		default: true,
 		nycCommands: nycCommands.main
 	},
 	hookRequire: {
