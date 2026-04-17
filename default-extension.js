@@ -6,5 +6,7 @@ module.exports = [
 	'.mjs',
 	'.ts',
 	'.tsx',
-	'.jsx'
+	'.jsx',
+	'.cts',
+	'.mts'
 ];
