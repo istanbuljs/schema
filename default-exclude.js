@@ -14,6 +14,9 @@ module.exports = [
 	`**/*{.,-}test.{${testFileExtensions}}`,
 	'**/__tests__/**',
 
+	/* Exclude yarn pnp resolver */
+	'.pnp.*',
+
 	/* Exclude common development tool configuration files */
 	'**/{ava,babel,nyc}.config.{js,cjs,mjs}',
 	'**/jest.config.{js,cjs,mjs,ts}',
